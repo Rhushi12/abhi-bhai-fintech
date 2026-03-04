@@ -49,7 +49,7 @@ export const Protocol = () => {
             );
 
             // Each card takes up 100vh. We pin them progressively so they stack seamlessly over the previous one.
-            cardsRef.current.forEach((card, index) => {
+            cardsRef.current.forEach((card) => {
                 if (!card) return;
 
                 // For stacking over the previous cards, we pin them once they hit the top of the viewport
