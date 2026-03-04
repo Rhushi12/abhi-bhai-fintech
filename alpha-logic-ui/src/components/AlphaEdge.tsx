@@ -114,11 +114,11 @@ export const AlphaEdge = () => {
 
             // 2. Title Movement (Start Center -> Top Left over 0-10% progress)
             tl.to(title, {
-                top: "3rem", // ~48px
-                left: "3rem",
+                top: "10vh", // Use viewport relative top
+                left: "5vw", // Use viewport relative left instead of strict rems
                 xPercent: 0,
                 yPercent: 0,
-                scale: 0.6,
+                scale: 0.5, // slightly smaller scale for smaller screens
                 ease: "power2.inOut",
                 duration: 0.15
             }, 0);
@@ -208,11 +208,11 @@ export const AlphaEdge = () => {
             {/* Transforming Title */}
             <div
                 ref={titleRef}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 origin-top-left pointer-events-none"
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 origin-top-left pointer-events-none max-w-[90vw]"
             >
                 <h2
                     ref={parallaxTitleRef}
-                    className="font-playfair italic tracking-tighter text-6xl md:text-8xl lg:text-[9rem] text-[#FAF9F6] leading-none drop-shadow-lg whitespace-nowrap [text-shadow:_0_4px_24px_rgb(0_0_0_/_80%)]"
+                    className="font-playfair italic tracking-tighter text-5xl md:text-8xl lg:text-[9rem] text-[#FAF9F6] leading-none drop-shadow-lg whitespace-nowrap [text-shadow:_0_4px_24px_rgb(0_0_0_/_80%)]"
                 >
                     The Alpha <span style={{ fontFamily: "'hwcigars', serif" }}>Edge.</span>
                 </h2>
