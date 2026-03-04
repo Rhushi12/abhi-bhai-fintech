@@ -6,12 +6,7 @@ const SIGNALS = [
     "Value Arbitrage",
     "Growth Signals"
 ];
-const LOGS = [
-    "RESOURCING_INSTITUTIONAL_LIQUIDITY...",
-    "INITIALIZING_ARCHITECT_PROTOCOL...",
-    "STRUCTURING_BESPOKE_POSITIONS...",
-    "OVERSIGHT_VERIFIED..."
-];
+
 
 // Reusable wrapper to add 3D Tilt interaction to cards
 const InteractiveCard = ({ children, className = "", onClick }: any) => {
@@ -80,7 +75,7 @@ export const FeatureLogic = () => {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     <DiagnosticShuffler />
-                    <TelemetryTypewriter />
+                    <PortfolioCurator />
                     <ProtocolScheduler />
                 </div>
             </div>
@@ -149,66 +144,88 @@ const DiagnosticShuffler = () => {
     );
 };
 
-const TelemetryTypewriter = () => {
-    const [lines, setLines] = useState<string[]>([]);
-    const containerRef = useRef<HTMLDivElement>(null);
-    const cursorRef = useRef<HTMLSpanElement>(null);
+// NEW: Portfolio Curator - Interactive Balance Scale
+const PortfolioCurator = () => {
+    const [balance, setBalance] = useState<number>(50); // 0 to 100 percentage
+    const fulcrumRef = useRef<HTMLDivElement>(null);
+    const leftTextRef = useRef<HTMLDivElement>(null);
+    const rightTextRef = useRef<HTMLDivElement>(null);
 
-    const typeLine = () => {
-        setLines(prev => {
-            if (prev.length >= LOGS.length) return prev; // Avoid infinite stacking if component unmount fails edge cases
-            return [...prev, LOGS[prev.length]];
+    const handleInteraction = (e: React.MouseEvent<HTMLDivElement>) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const percentage = Math.max(10, Math.min(90, (x / rect.width) * 100));
+        setBalance(percentage);
+
+        // Animate fulcrum sliding
+        gsap.to(fulcrumRef.current, {
+            left: `${percentage}%`,
+            duration: 0.6,
+            ease: "back.out(1.5)"
         });
 
-        setLines(prev => {
-            if (prev.length >= LOGS.length) {
-                setTimeout(() => {
-                    setLines([]);
-                    setTimeout(typeLine, 500);
-                }, 3000);
-            } else {
-                setTimeout(typeLine, 800 + Math.random() * 1000);
-            }
-            return prev;
-        });
+        // Flash text to indicate shift
+        gsap.fromTo([leftTextRef.current, rightTextRef.current],
+            { color: '#C9A84C', scale: 1.05 },
+            { color: 'inherit', scale: 1, duration: 0.4, ease: "power2.out" }
+        );
     };
 
-    useEffect(() => {
-        const timeout = setTimeout(typeLine, 1000);
-
-        gsap.to(cursorRef.current, {
-            opacity: 0,
-            repeat: -1,
-            yoyo: true,
-            duration: 0.4,
-            ease: "steps(1)"
-        });
-
-        return () => clearTimeout(timeout);
-    }, []);
-
-    useEffect(() => {
-        if (containerRef.current) {
-            containerRef.current.scrollTop = containerRef.current.scrollHeight;
-        }
-    }, [lines]);
-
     return (
-        <InteractiveCard className="border border-brand-obsidian/10 bg-brand-obsidian text-brand-ivory/80 p-10 h-[320px] flex flex-col font-jetbrains text-sm relative overflow-hidden shadow-xl hover:shadow-2xl transition-shadow cursor-crosshair">
-            <div className="text-brand-gold/60 text-xs mb-6 uppercase border-b border-brand-ivory/10 pb-4 tracking-widest flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-                Architect's Ledger // Protocol Sync
+        <InteractiveCard className="group border border-brand-obsidian/10 bg-white/50 backdrop-blur-sm p-10 h-[320px] flex flex-col justify-between shadow-sm hover:shadow-xl transition-shadow duration-700">
+            <div className="font-jetbrains text-xs uppercase text-brand-obsidian/40 flex justify-between tracking-wider">
+                <span>The Architect</span>
+                <span className="group-hover:text-brand-gold transition-colors">Adjust Weighting</span>
             </div>
-            <div ref={containerRef} className="flex-1 overflow-y-auto w-full space-y-3 scrollbar-hide pointer-events-none">
-                {lines.map((line, i) => (
-                    <div key={i} className="opacity-90 tracking-wide text-xs">
-                        <span className="text-brand-gold mr-3">◆</span>{line}
+
+            <div className="w-full flex-1 flex flex-col justify-center gap-8">
+                <div className="flex justify-between font-inter text-sm font-semibold text-brand-obsidian uppercase tracking-widest">
+                    <div ref={leftTextRef} className="text-left w-1/2 transition-colors">
+                        Preservation<br />
+                        <span className="font-playfair italic font-normal text-brand-obsidian/60 capitalize text-lg tracking-normal">{balance.toFixed(0)}%</span>
                     </div>
-                ))}
-                <div>
-                    <span className="text-brand-gold mr-3">◆</span>
-                    <span ref={cursorRef} className="inline-block w-2 bg-brand-gold h-4 translate-y-1"></span>
+                    <div ref={rightTextRef} className="text-right w-1/2 transition-colors">
+                        Momentum<br />
+                        <span className="font-playfair italic font-normal text-brand-obsidian/60 capitalize text-lg tracking-normal">{(100 - balance).toFixed(0)}%</span>
+                    </div>
                 </div>
+
+                {/* The Interactive Scale Line */}
+                <div
+                    className="relative w-full h-12 cursor-ew-resize flex items-center group/scale"
+                    onClick={handleInteraction}
+                    onMouseMove={(e) => {
+                        if (e.buttons === 1) handleInteraction(e); // Allow drag
+                    }}
+                >
+                    {/* Background track */}
+                    <div className="absolute w-full h-[1px] bg-brand-obsidian/20" />
+
+                    {/* Active Track left */}
+                    <div
+                        className="absolute h-[1px] bg-brand-gold transition-all duration-75"
+                        style={{ width: `${balance}%` }}
+                    />
+
+                    {/* Active Track right */}
+                    <div
+                        className="absolute right-0 h-[1px] bg-brand-obsidian transition-all duration-75"
+                        style={{ width: `${100 - balance}%` }}
+                    />
+
+                    {/* Fulcrum Diamond */}
+                    <div
+                        ref={fulcrumRef}
+                        className="absolute w-4 h-4 bg-brand-ivory border border-brand-gold rotate-45 -translate-x-1/2 shadow-md group-hover/scale:scale-125 transition-transform"
+                        style={{ left: '50%' }}
+                    >
+                        <div className="absolute inset-m-1 bg-brand-gold/20" />
+                    </div>
+                </div>
+            </div>
+
+            <div className="font-jetbrains text-[10px] uppercase text-brand-obsidian/40 tracking-widest text-center mt-4">
+                Discretionary Allocation Enabled
             </div>
         </InteractiveCard>
     );
