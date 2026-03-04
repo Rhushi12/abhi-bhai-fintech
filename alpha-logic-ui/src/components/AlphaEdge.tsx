@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 const ADVANTAGES = [
     {
         number: "01.",
-        title: "Institutional Quant.",
-        text: "Retail investors guess. We execute. Our algorithms process thousands of data points to identify mispriced assets before they hit the mainstream radar."
+        title: "Institutional Permanence.",
+        text: "Retail investors guess. We execute. Our Master Architect scrutinizes thousands of data points to identify mispriced assets before they hit the mainstream radar, constructing portfolios by hand."
     },
     {
         number: "02.",
@@ -73,8 +73,23 @@ export const AlphaEdge = () => {
             }
         };
 
-        // Render first frame on load
-        images[0].onload = render;
+        // Enhance robust rendering for cached images and async loading
+        const initialRender = () => {
+            if (alpha.frame === 0) render();
+        };
+
+        if (images[0].complete) {
+            initialRender();
+        } else {
+            images[0].onload = initialRender;
+        }
+
+        // Ensure late-loading images still render if they are the currently active frame
+        images.forEach((img, idx) => {
+            img.onload = () => {
+                if (alpha.frame === idx) render();
+            };
+        });
 
         const ctx = gsap.context(() => {
             // Main Pin Timeline

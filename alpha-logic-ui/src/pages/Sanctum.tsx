@@ -200,7 +200,7 @@ const NetworkCatalyst = () => {
 
 // E. Institutional Protocol (Locked Cards)
 const MODULES = [
-    { title: "Module I", name: "Algorithmic Discovery" },
+    { title: "Module I", name: "Discretionary Discovery" },
     { title: "Module II", name: "The Vanguard Tearsheet" },
     { title: "Module III", name: "Capital Deployment" }
 ];

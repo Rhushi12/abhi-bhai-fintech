@@ -6,12 +6,11 @@ const SIGNALS = [
     "Value Arbitrage",
     "Growth Signals"
 ];
-
 const LOGS = [
-    "CALCULATING_RISK_PARITY...",
-    "EXECUTING_QUANT_FILTER...",
-    "ANALYZING_MARKET_DEPTH...",
-    "REBALANCING_PORTFOLIO..."
+    "RESOURCING_INSTITUTIONAL_LIQUIDITY...",
+    "INITIALIZING_ARCHITECT_PROTOCOL...",
+    "STRUCTURING_BESPOKE_POSITIONS...",
+    "OVERSIGHT_VERIFIED..."
 ];
 
 // Reusable wrapper to add 3D Tilt interaction to cards
@@ -198,16 +197,16 @@ const TelemetryTypewriter = () => {
         <InteractiveCard className="border border-brand-obsidian/10 bg-brand-obsidian text-brand-ivory/80 p-10 h-[320px] flex flex-col font-jetbrains text-sm relative overflow-hidden shadow-xl hover:shadow-2xl transition-shadow cursor-crosshair">
             <div className="text-brand-gold/60 text-xs mb-6 uppercase border-b border-brand-ivory/10 pb-4 tracking-widest flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-brand-gold animate-pulse" />
-                Terminal // Live Feed
+                Architect's Ledger // Protocol Sync
             </div>
             <div ref={containerRef} className="flex-1 overflow-y-auto w-full space-y-3 scrollbar-hide pointer-events-none">
                 {lines.map((line, i) => (
                     <div key={i} className="opacity-90 tracking-wide text-xs">
-                        <span className="text-brand-gold mr-3">~</span>{line}
+                        <span className="text-brand-gold mr-3">◆</span>{line}
                     </div>
                 ))}
                 <div>
-                    <span className="text-brand-gold mr-3">~</span>
+                    <span className="text-brand-gold mr-3">◆</span>
                     <span ref={cursorRef} className="inline-block w-2 bg-brand-gold h-4 translate-y-1"></span>
                 </div>
             </div>

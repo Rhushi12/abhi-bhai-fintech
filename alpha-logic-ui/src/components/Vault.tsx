@@ -112,7 +112,7 @@ export const Vault = () => {
                     </h2>
 
                     <p className="vault-reveal text-brand-ivory/40 font-inter text-xs md:text-sm leading-loose max-w-xs font-medium tracking-widest uppercase mt-4">
-                        Zero-Trust Architecture. <br /> Absolute Algorithmic Integrity.
+                        Zero-Trust Architecture. <br /> Supreme <span className="font-playfair italic">Discretionary</span> Authority.
                     </p>
                 </div>
 

@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 const PROTOCOL_STEPS = [
     {
         num: "01",
-        title: "QUANT SELECTION",
-        desc: "Algorithmic filtering of top 200 NSE stocks. Our proprietary screening engine evaluates momentum, value, and quality factors across multiple timeframes to surface only the highest-conviction opportunities.",
+        title: "BESPOKE SELECTION",
+        desc: "Hand-curated filtering of top 200 NSE stocks. The Master Architect evaluates momentum, value, and quality factors across multiple timeframes to construct only the highest-conviction portfolios.",
         animation: 'helix'
     },
     {

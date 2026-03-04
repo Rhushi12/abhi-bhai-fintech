@@ -17,7 +17,7 @@ export const MarqueeTicker = () => {
         return () => ctx.revert();
     }, []);
 
-    const content = "[ ALPHA_STRATEGY: +24.8% CAGR ] \u00A0\u00A0\u00A0 [ SYSTEM_STATUS: OPERATIONAL ] \u00A0\u00A0\u00A0 [ REBALANCE_SYNC: ACTIVE ]";
+    const content = "[ THE_RESERVE_PERFORMANCE: +24.8% CAGR ] \u00A0\u00A0\u00A0 [ DISCRETIONARY_OVERSIGHT: ACTIVE ] \u00A0\u00A0\u00A0 [ PROTOCOL_STATUS: BESPOKE ]";
 
     return (
         <div className="w-full relative overflow-hidden bg-brand-obsidian text-brand-ivory py-3 border-y border-brand-ivory/10">

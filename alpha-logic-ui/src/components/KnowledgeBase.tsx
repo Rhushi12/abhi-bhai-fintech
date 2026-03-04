@@ -6,8 +6,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
     {
-        question: "How does the algorithmic trading system work?",
-        answer: "Our proprietary algorithms continuously analyze market data, identifying patterns and executing trades based on predefined, rigorously backtested strategies. The entire process is automated, eliminating emotional decision-making."
+        question: "How does the discretionary trading system work?",
+        answer: "The Master Architect continuously analyzes market data, identifying patterns and structuring positions based on predefined, meticulously backtested frameworks. The entire process is hand-curated to ensure supreme discretion over capital."
     },
     {
         question: "Are my funds actually secure?",
@@ -15,11 +15,11 @@ const faqs = [
     },
     {
         question: "Can I withdraw my capital at any time?",
-        answer: "Absolutely. Since your funds are stored in your own demat/brokerage account, you retain complete liquidity and control. You can pause the algorithms and withdraw your funds whenever you choose."
+        answer: "Absolutely. Since your funds are stored in your own demat/brokerage account, you retain complete liquidity and control. You can halt the strategy deployment and withdraw your funds whenever you choose."
     },
     {
         question: "What happens during severe market crashes?",
-        answer: "Our systems are designed with built-in risk management protocols. Depending on the strategy, the algorithm may hedge positions, tighten stop-losses, or exit to cash entirely during periods of extreme volatility to preserve your capital."
+        answer: "Our protocols are designed with built-in risk management. Depending on the architecture, the Master Architect may hedge positions, tighten stop-losses, or exit to cash entirely during periods of extreme volatility to preserve your capital."
     }
 ];
 
