@@ -129,10 +129,10 @@ export const Hero = () => {
                             PRECISION BEYOND
                         </h1>
                     </div>
-                    <div className="overflow-hidden pb-4">
+                    <div className="pb-4 px-4">
                         <h2
                             ref={alphaTextRef}
-                            className="text-[#FFFFFF] font-playfair italic text-8xl md:text-[12rem] lg:text-[15rem] leading-[0.8] pr-4 drop-shadow-sm will-change-transform"
+                            className="text-[#FFFFFF] font-playfair italic text-8xl md:text-[12rem] lg:text-[15rem] leading-[0.8] px-4 drop-shadow-sm will-change-transform"
                         >
                             Alpha.
                         </h2>
