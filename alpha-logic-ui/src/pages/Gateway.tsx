@@ -205,7 +205,7 @@ export function Gateway() {
                                 onFocus={handleEmailFocus}
                                 onBlur={handleBlur}
                                 placeholder="Satoshi Nakamoto"
-                                className="w-full bg-transparent border-b border-slate-300 pb-3 font-jetbrains text-[#0D0D12] focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#0D0D12]/20"
+                                className="w-full bg-transparent border-b border-slate-400 pb-3 font-jetbrains text-[#0D0D12] focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#0D0D12]/20"
                             />
                         </div>
                     )}
@@ -220,7 +220,7 @@ export function Gateway() {
                             onFocus={handleEmailFocus}
                             onBlur={handleBlur}
                             placeholder="your@institution.com"
-                            className="w-full bg-transparent border-b border-slate-300 pb-3 font-jetbrains text-[#0D0D12] focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#0D0D12]/20"
+                            className="w-full bg-transparent border-b border-slate-400 pb-3 font-jetbrains text-[#0D0D12] focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#0D0D12]/20"
                         />
                     </div>
 
@@ -234,7 +234,7 @@ export function Gateway() {
                             onFocus={handlePasswordFocus}
                             onBlur={handleBlur}
                             placeholder="••••••••••••"
-                            className="w-full bg-transparent border-b border-slate-300 pb-3 font-jetbrains text-[#0D0D12] focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#0D0D12]/20"
+                            className="w-full bg-transparent border-b border-slate-400 pb-3 font-jetbrains text-[#0D0D12] focus:outline-none focus:border-[#C9A84C] transition-colors placeholder:text-[#0D0D12]/20"
                         />
                     </div>
 
