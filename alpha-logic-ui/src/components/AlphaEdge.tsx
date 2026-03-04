@@ -59,17 +59,31 @@ export const AlphaEdge = () => {
         }
 
         const render = () => {
-            if (images[alpha.frame]) {
+            let target = Math.round(alpha.frame);
+
+            // If the exact frame isn't loaded yet, fallback to the nearest previously loaded frame
+            if (images[target] && !images[target].complete) {
+                for (let i = target - 1; i >= 0; i--) {
+                    if (images[i] && images[i].complete) {
+                        target = i;
+                        break;
+                    }
+                }
+            }
+
+            // If we found a valid, complete frame, draw it. Otherwise do nothing (avoid clearing canvas to black)
+            if (images[target] && images[target].complete && images[target].width > 0) {
+                const img = images[target];
                 // Object cover math
-                const hRatio = canvas.width / images[alpha.frame].width;
-                const vRatio = canvas.height / images[alpha.frame].height;
+                const hRatio = canvas.width / img.width;
+                const vRatio = canvas.height / img.height;
                 const ratio = Math.max(hRatio, vRatio);
-                const centerShift_x = (canvas.width - images[alpha.frame].width * ratio) / 2;
-                const centerShift_y = (canvas.height - images[alpha.frame].height * ratio) / 2;
+                const centerShift_x = (canvas.width - img.width * ratio) / 2;
+                const centerShift_y = (canvas.height - img.height * ratio) / 2;
 
                 context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(images[alpha.frame], 0, 0, images[alpha.frame].width, images[alpha.frame].height,
-                    centerShift_x, centerShift_y, images[alpha.frame].width * ratio, images[alpha.frame].height * ratio);
+                context.drawImage(img, 0, 0, img.width, img.height,
+                    centerShift_x, centerShift_y, img.width * ratio, img.height * ratio);
             }
         };
 
