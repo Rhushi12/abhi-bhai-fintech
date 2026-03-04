@@ -95,7 +95,7 @@ export const Vault = () => {
         >
             <div className="absolute inset-0 bg-noise opacity-[0.03] mix-blend-overlay pointer-events-none"></div>
 
-            <div className="max-w-7xl w-full z-10 flex flex-col md:flex-row gap-16 lg:gap-24" ref={contentRef}>
+            <div className="max-w-7xl mx-auto w-full z-10 flex flex-col md:flex-row gap-16 lg:gap-24" ref={contentRef}>
 
                 {/* Left section: Headline */}
                 <div className="md:w-[40%] flex flex-col justify-center items-start">
